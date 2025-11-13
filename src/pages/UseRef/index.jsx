@@ -9,7 +9,7 @@ function UseRef() {
     const newInputRef = useRef(null);
     const removeBtnRef = useRef(null);
 
-    console.log("Re-render", inputRef);
+    console.log("Re-render");
 
     useEffect(() => {
         console.log("Mount", inputRef);
@@ -41,7 +41,7 @@ function UseRef() {
                     if (clickButtonRef.current % 5 === 0) {
                         alert(`Click ${clickButtonRef.current} lần`);
                     }
-                }}>Nhấn em đi</button>
+                }}>Click me</button>
 
             {/* Input có thể remove */}
             {show && <TextInput
@@ -55,14 +55,14 @@ function UseRef() {
                 className="m-3 p-1.5 border-2 rounded-2xl cursor-pointer"
                 onClick={() => {
                     inputRef.current.focus();
-                }}> 👈 Tập trung và em nè</button>
+                }}> 👈 Focus</button>
             <button
                 ref={removeBtnRef}
                 className="p-1.5 border-2 rounded-2xl cursor-pointer "
                 onClick={() => {
                     inputRef.current.remove();
                     setShow(!show);
-                }}>Xóa em</button>
+                }}>Remove</button>
 
             {/* Input chỉ có method focus() */}
             <NewTextInput
@@ -79,7 +79,7 @@ function UseRef() {
                     if (newInputRef.current) {
                         newInputRef.current.focus();
                     }
-                }}>👈 Tập trung vào em nè</button>
+                }}>👈 Focus</button>
 
         </>
     )

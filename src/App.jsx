@@ -1,6 +1,7 @@
 import { BrowserRouter, NavLink, Route, Routes } from "react-router"
 import EditAvatar from "./pages/EditAvatar"
 import UseRef from "./pages/UseRef"
+import ReactMemo from "./pages/ReactMemo"
 
 const styles = {
   link: {
@@ -12,17 +13,23 @@ const styles = {
   }
 }
 
+const links = [
+  { path: "edit-avatar", title: "EditAvatar" },
+  { path: "use-ref", title: "UseRef" },
+  { path: "react-memo", title: "ReactMemo" }
+]
 
 function HomePage() {
   return (
     <>
       <ul>
-        <li style={styles.list}>
-          <NavLink to="edit-avatar" style={styles.link}>Edit Avatar</NavLink>
-        </li>
-        <li style={styles.list}>
-          <NavLink to="use-ref" style={styles.link}>UseRef</NavLink>
-        </li>
+        {links.map((item, index) => {
+          return (
+            <li key={index} style={styles.list}>
+              <NavLink to={item.path} style={styles.link}>{item.title}</NavLink>
+            </li>
+          )
+        })}
       </ul>
     </>
   )
@@ -36,6 +43,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="edit-avatar" element={<EditAvatar />} />
           <Route path="use-ref" element={<UseRef />} />
+          <Route path="react-memo" element={<ReactMemo />} />
         </Routes>
       </BrowserRouter>
     </>
